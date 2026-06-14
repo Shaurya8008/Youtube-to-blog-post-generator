@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
-import { Loader2, FileText, Check, Copy, Wand2 } from "lucide-react";
+import { Loader2, FileText, Check, Copy, Wand2, AlertCircle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 export default function Home() {
@@ -133,6 +133,7 @@ export default function Home() {
 
         {error && (
           <div className={styles.error}>
+            <AlertCircle size={20} />
             {error}
           </div>
         )}

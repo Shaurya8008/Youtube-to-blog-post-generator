@@ -3,165 +3,181 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 4rem 1rem;
-  max-width: 768px;
+  padding: 5rem 1.5rem;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 3rem;
-  animation: fadeIn 0.8s ease-out;
+  margin-bottom: 3.5rem;
+  animation: fadeSlideDown 0.8s ease-out;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
   letter-spacing: -0.04em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  color: #666;
-  font-size: 1.1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .subtitle {
-    color: #999;
-  }
+  color: #a1a1aa;
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .formCard {
   width: 100%;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 2rem;
-  animation: slideUp 0.6s ease-out;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-glass);
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.2s both;
 }
 
 .inputGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
   margin-bottom: 1.5rem;
 }
 
 .label {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
+  color: #e4e4e7;
 }
 
 .input {
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.25rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--foreground);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  transition: all 0.3s ease;
   font-size: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 1px var(--primary);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .input::placeholder {
-  color: #888;
+  color: #71717a;
 }
 
 .controlsRow {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .selectGroup {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .select {
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.25rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--foreground);
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
   cursor: pointer;
   appearance: none;
   font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
 .select:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.25);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.select option {
+  background-color: #18181b;
+  color: #fff;
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   width: 100%;
-  padding: 0.875rem 1.5rem;
-  background: var(--primary);
-  color: var(--primary-foreground);
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+  color: white;
   border: none;
-  border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.1s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
 }
 
 .button:hover:not(:disabled) {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+  background: linear-gradient(135deg, #9333ea 0%, #4338ca 100%);
 }
 
 .button:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
 .button:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .error {
   margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fca5a5;
-  border-radius: var(--radius);
-  font-size: 0.9rem;
+  padding: 1.25rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
   animation: slideUp 0.3s ease-out;
-}
-
-@media (prefers-color-scheme: dark) {
-  .error {
-    background-color: #3f1a1a;
-    color: #fca5a5;
-    border-color: #7f1d1d;
-  }
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .resultCard {
   width: 100%;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: var(--shadow-sm);
-  animation: slideUp 0.5s ease-out;
+  box-shadow: var(--shadow-glass);
+  animation: fadeSlideUp 0.6s ease-out;
 }
 
 .resultHeader {
@@ -169,55 +185,56 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .resultTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  color: #fff;
 }
 
 .copyButton {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: transparent;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
-  color: var(--foreground);
-  border-radius: var(--radius);
+  color: #e4e4e7;
+  border-radius: var(--radius-md);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .copyButton:hover {
-  background-color: var(--border);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .copyButton.copied {
-  background-color: #10b981;
-  border-color: #10b981;
-  color: white;
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
