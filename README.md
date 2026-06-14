@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YouTube to Blog Generator 🚀
 
-## Getting Started
+An AI-powered web application that instantly transforms any YouTube video into a beautifully formatted, SEO-friendly blog post.
 
-First, run the development server:
+## Features ✨
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Instant Conversion**: Paste a YouTube URL and get a ready-to-publish blog post in seconds.
+- **Customizable Tone**: Choose from Professional, Casual, Humorous, or Educational tones to match your audience.
+- **Adjustable Length**: Tailor the output to be Short (500 words), Medium (1000 words), or Long (1500+ words).
+- **Premium UI**: Built with a sleek, minimalist aesthetic featuring glassmorphism and smooth micro-animations.
+- **One-Click Copy**: Easily copy the generated Markdown directly to your clipboard.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack 🛠️
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend Framework**: [Next.js (App Router)](https://nextjs.org/)
+- **Styling**: Vanilla CSS Modules for a highly custom, performant design.
+- **AI Integration**: [Google Gemini 2.5 Flash API](https://ai.google.dev/) via `@google/genai`.
+- **Data Fetching**: `youtube-transcript` for retrieving video closed captions.
+- **Markdown Parsing**: `react-markdown` for rendering the AI output beautifully.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Getting Started 💻
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+You will need a Google Gemini API Key. You can get one for free at [Google AI Studio](https://aistudio.google.com/app/apikey).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Shaurya8008/Youtube-to-blog-post-generator.git
+   cd Youtube-to-blog-post-generator
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Create a `.env.local` file in the root directory and add your Gemini API key:
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to use the application.
+
+## How it Works 🧠
+
+1. The user inputs a YouTube URL.
+2. The Next.js API route extracts the video ID and uses `youtube-transcript` to fetch the public closed captions.
+3. The transcript is compiled and sent to the Gemini 2.5 Flash model with a carefully engineered prompt specifying the desired tone and length.
+4. Gemini streams back a fully formatted Markdown blog post.
+5. The frontend renders the Markdown using `react-markdown` and provides a seamless copy mechanism.
+
+## Limitations ⚠️
+- The application currently requires the target YouTube video to have public Closed Captions (CC) enabled. It cannot transcribe videos without existing captions.
+- Extremely long videos might take longer to process depending on the API payload size.
+
+## License 📄
+This project is open-sourced under the MIT License.
