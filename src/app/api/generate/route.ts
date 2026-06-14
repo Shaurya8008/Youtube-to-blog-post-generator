@@ -62,6 +62,15 @@ ${fullTranscript.substring(0, 100000)}
     return NextResponse.json({ content: response.text });
   } catch (error: any) {
     console.error("API Error:", error);
+    
+    // Check for Gemini API 503 error
+    if (error?.status === 503 || error?.message?.includes("503") || error?.message?.includes("unavailable")) {
+      return NextResponse.json(
+        { error: "The Google Gemini AI service is currently overloaded or temporarily unavailable. Please try again in a few minutes." },
+        { status: 503 }
+      );
+    }
+
     return NextResponse.json(
       { error: "An internal server error occurred while generating the blog post." },
       { status: 500 }
